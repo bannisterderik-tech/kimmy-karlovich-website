@@ -279,6 +279,9 @@ function askKimmy(kind){
 }
 `;
 
+// Content-hash of the assets — appended to asset URLs so every deploy busts caches.
+export const ASSET_V = [...(css + js)].reduce((a, c) => (a * 33 + c.charCodeAt(0)) >>> 0, 5381).toString(36);
+
 // ---------------------------------------------------------------- SVG marks
 export const horseshoe = (cls = 'hs') => `<svg class="${cls}" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 4c9.4 0 15 7.4 15 15.5 0 6.8-3.6 12.4-7.4 16l-3.2-3.4c3.2-3 5.8-7.4 5.8-12.4C30.2 13 26 8.8 20 8.8S9.8 13 9.8 19.7c0 5 2.6 9.4 5.8 12.4l-3.2 3.4C8.6 31.9 5 26.3 5 19.5 5 11.4 10.6 4 20 4Z" fill="#159A8E"/><circle cx="9" cy="17" r="1.6" fill="#C9736C"/><circle cx="31" cy="17" r="1.6" fill="#C9736C"/><circle cx="11.5" cy="26" r="1.6" fill="#C9736C"/><circle cx="28.5" cy="26" r="1.6" fill="#C9736C"/></svg>`;
 
@@ -324,7 +327,7 @@ export function page({ path, title, desc, ogImg = 'images/gen-hero-valley.jpg', 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Karla:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="${R}assets/style.css">
+<link rel="stylesheet" href="${R}assets/style.css?v=${ASSET_V}">
 ${schemas}
 </head>
 <body>
@@ -407,7 +410,7 @@ ${body}
     </div>
   </div>
 </footer>
-<script src="${R}assets/site.js"></script>
+<script src="${R}assets/site.js?v=${ASSET_V}"></script>
 </body>
 </html>`;
 }

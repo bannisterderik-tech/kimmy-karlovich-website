@@ -129,13 +129,13 @@ const TIPS = [
 // ---------------------------------------------------------- TOWN TOURS (26 carousels)
 // One unique image per town — no repeats anywhere on the calendar.
 const TOWN_IMG = {
-  roseburg: 'gen-roseburg.jpg', green: 'gen-ig-porch.jpg', winston: 'gen-winston-safari.jpg',
+  roseburg: 'gen-roseburg.jpg', green: 'kimmy-horses-pen.jpg', winston: 'gen-ig-porch.jpg',
   sutherlin: 'gen-sutherlin-dock.jpg', 'myrtle-creek': 'gen-barn-sunset.jpg', canyonville: 'gen-ig-winter-barn.jpg',
   oakland: 'gen-ig-cattle-oaks.jpg', riddle: 'gen-riddle-valley.jpg', glide: 'gen-glide-confluence.jpg',
   'camas-valley': 'gen-ig-haybales.jpg', elkton: 'gen-elkton-butterfly.jpg', drain: 'gen-drain-bridge.jpg',
   yoncalla: 'gen-ig-lambs.jpg', umpqua: 'gen-umpqua-riverbend.jpg', melrose: 'gen-melrose-vineyard.jpg',
   lookingglass: 'gen-horses-mist.jpg', dixonville: 'gen-dixonville-orchard.jpg', tenmile: 'gen-tenmile-pond.jpg',
-  'days-creek': 'gen-ig-fair.jpg', tiller: 'gen-tiller-cabin.jpg', azalea: 'gen-azalea-reservoir.jpg',
+  'days-creek': 'kimmy-fair.jpg', tiller: 'gen-elk-herd.jpg', azalea: 'gen-azalea-reservoir.jpg',
   glendale: 'gen-glendale-valley.jpg', scottsburg: 'gen-ig-driftboat.jpg', 'idleyld-park': 'gen-idleyld-falls.jpg',
   wilbur: 'gen-ig-coffee.jpg', winchester: 'gen-winchester-salmon.jpg',
 };
@@ -145,7 +145,7 @@ const SVC_IMG2 = {
   'farm-ranch': 'gen-cattle-drive.jpg', equestrian: 'kimmy-portrait.jpg',
   'land-acreage': 'gen-oak-gate.jpg', 'rural-homes': 'gen-homestead-garden.jpg',
   riverfront: 'gen-swimming-hole.jpg', 'timber-recreational': 'gen-fir-canopy.jpg',
-  'hunting-property': 'gen-blacktail.jpg', 'vineyard-winery': 'gen-grapes.jpg',
+  'hunting-property': 'kimmy-hunt.jpg', 'vineyard-winery': 'gen-grapes.jpg',
 };
 
 const townTour = (l, i) => ({
@@ -306,7 +306,7 @@ const CHECKLISTS = [
     tagKeys: ['town', 'buyer'],
   },
   {
-    slug: 'hunting-ground-checklist', title: `Buying hunting ground? Check <em style="font-style:italic;font-weight:400;color:#F5D3CF">these four.</em>`, img: 'gen-elk-herd.jpg', eyebrow: 'Land Smarts', tag: 'From a hunter',
+    slug: 'hunting-ground-checklist', title: `Buying hunting ground? Check <em style="font-style:italic;font-weight:400;color:#F5D3CF">these four.</em>`, img: 'gen-blacktail.jpg', eyebrow: 'Land Smarts', tag: 'From a hunter',
     slides: [
       { title: `Feed, water, cover, quiet`, body: `Elk need all four in their daily loop. A meadow system, year-round water, timbered bedding, and low pressure will hold animals that a bigger, barer parcel never sees.` },
       { title: `Public land next door`, body: `Douglas County is laced with BLM and Forest Service ground. A 60 bordering thousands of public acres hunts like something far bigger — verify actual legal adjacency on maps, not listing claims.` },

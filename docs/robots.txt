@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bannisterderik-tech.github.io/kimmy-karlovich-website/sitemap.xml

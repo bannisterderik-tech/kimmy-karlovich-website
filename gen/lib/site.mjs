@@ -87,15 +87,15 @@ section{padding:clamp(3.5rem,8vw,6.5rem) 0;position:relative}
 @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
 .hero::after{content:'';position:absolute;inset:0;z-index:-1;
   background:linear-gradient(180deg,rgba(19,36,32,.25) 0%,rgba(19,36,32,.08) 40%,rgba(19,36,32,.82) 100%)}
-.hero-in{width:100%;padding:9rem 0 3.4rem}
+.hero-in{width:100%;padding-top:9rem;padding-bottom:3.4rem}
 .hero .eyebrow{color:var(--pink);}
 .hero .eyebrow::before{background:var(--turq)}
 .hero h1{color:#fff;margin:.9rem 0 1.1rem;max-width:15ch;text-shadow:0 2px 30px rgba(0,0,0,.3)}
 .hero h1 em{font-style:italic;font-weight:400;color:var(--pink)}
 .hero p{max-width:52ch;font-size:1.14rem;color:#F2EBDD}
 .hero-cta{display:flex;gap:.9rem;margin-top:1.8rem;flex-wrap:wrap}
-.hero-cta .ghost{border-color:#fff;color:#fff!important}
-.hero-cta .ghost:hover{background:#fff;color:var(--ink)!important}
+.hero .hero-cta .ghost,.cta .hero-cta .ghost{border-color:#fff;color:#fff!important}
+.hero .hero-cta .ghost:hover,.cta .hero-cta .ghost:hover{background:#fff;color:var(--ink)!important}
 .hero-badge{position:absolute;right:clamp(1rem,5vw,4rem);bottom:3.2rem;width:150px;height:150px;
   animation:spin 24s linear infinite;opacity:.94;z-index:3;display:block}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -235,7 +235,7 @@ footer a:hover{color:var(--turq)}
 .foot-legal a{display:inline;color:#8B9C95}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .45s ease}
 .rv.on{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   .rv{opacity:1;transform:none;transition:none}
@@ -262,10 +262,10 @@ table.meta td:first-child{font-weight:700;color:var(--ink);width:42%}
 // ---------------------------------------------------------------- JS
 export const js = /* js */`
 document.addEventListener('DOMContentLoaded',()=>{
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px 30% 0px'});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-  const fall=()=>document.querySelectorAll('.rv:not(.on)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*1.08)el.classList.add('on')});
-  addEventListener('scroll',fall,{passive:true});setTimeout(fall,350);
+  const fall=()=>document.querySelectorAll('.rv:not(.on)').forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*1.35)el.classList.add('on')});
+  addEventListener('scroll',fall,{passive:true});setTimeout(fall,300);
   const b=document.querySelector('.nav-burger'),l=document.querySelector('.nav-links');
   if(b)b.addEventListener('click',()=>l.classList.toggle('open'));
 });

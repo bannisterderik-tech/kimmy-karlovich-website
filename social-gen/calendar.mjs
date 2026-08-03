@@ -127,16 +127,25 @@ const TIPS = [
 ];
 
 // ---------------------------------------------------------- TOWN TOURS (26 carousels)
+// One unique image per town — no repeats anywhere on the calendar.
 const TOWN_IMG = {
-  roseburg: 'gen-roseburg.jpg', green: 'gen-ig-porch.jpg', winston: 'gen-rural-home.jpg',
-  sutherlin: 'gen-land.jpg', 'myrtle-creek': 'gen-barn-sunset.jpg', canyonville: 'gen-ig-winter-barn.jpg',
-  oakland: 'gen-ig-cattle-oaks.jpg', riddle: 'gen-barn-sunset.jpg', glide: 'gen-riverfront.jpg',
-  'camas-valley': 'gen-ig-haybales.jpg', elkton: 'gen-vineyard.jpg', drain: 'gen-timber.jpg',
-  yoncalla: 'gen-ig-lambs.jpg', umpqua: 'gen-vineyard.jpg', melrose: 'gen-vineyard.jpg',
-  lookingglass: 'gen-horses-mist.jpg', dixonville: 'gen-equestrian.jpg', tenmile: 'gen-farm-ranch.jpg',
-  'days-creek': 'gen-ig-fair.jpg', tiller: 'gen-timber.jpg', azalea: 'gen-timber.jpg',
-  glendale: 'gen-ig-winter-barn.jpg', scottsburg: 'gen-ig-driftboat.jpg', 'idleyld-park': 'gen-riverfront.jpg',
-  wilbur: 'gen-ig-coffee.jpg', winchester: 'gen-riverfront.jpg',
+  roseburg: 'gen-roseburg.jpg', green: 'gen-ig-porch.jpg', winston: 'gen-winston-safari.jpg',
+  sutherlin: 'gen-sutherlin-dock.jpg', 'myrtle-creek': 'gen-barn-sunset.jpg', canyonville: 'gen-ig-winter-barn.jpg',
+  oakland: 'gen-ig-cattle-oaks.jpg', riddle: 'gen-riddle-valley.jpg', glide: 'gen-glide-confluence.jpg',
+  'camas-valley': 'gen-ig-haybales.jpg', elkton: 'gen-elkton-butterfly.jpg', drain: 'gen-drain-bridge.jpg',
+  yoncalla: 'gen-ig-lambs.jpg', umpqua: 'gen-umpqua-riverbend.jpg', melrose: 'gen-melrose-vineyard.jpg',
+  lookingglass: 'gen-horses-mist.jpg', dixonville: 'gen-dixonville-orchard.jpg', tenmile: 'gen-tenmile-pond.jpg',
+  'days-creek': 'gen-ig-fair.jpg', tiller: 'gen-tiller-cabin.jpg', azalea: 'gen-azalea-reservoir.jpg',
+  glendale: 'gen-glendale-valley.jpg', scottsburg: 'gen-ig-driftboat.jpg', 'idleyld-park': 'gen-idleyld-falls.jpg',
+  wilbur: 'gen-ig-coffee.jpg', winchester: 'gen-winchester-salmon.jpg',
+};
+
+// Second Ask Kimmy carousel per service gets its own cover image.
+const SVC_IMG2 = {
+  'farm-ranch': 'gen-cattle-drive.jpg', equestrian: 'kimmy-portrait.jpg',
+  'land-acreage': 'gen-oak-gate.jpg', 'rural-homes': 'gen-homestead-garden.jpg',
+  riverfront: 'gen-swimming-hole.jpg', 'timber-recreational': 'gen-fir-canopy.jpg',
+  'hunting-property': 'gen-blacktail.jpg', 'vineyard-winery': 'gen-grapes.jpg',
 };
 
 const townTour = (l, i) => ({
@@ -162,7 +171,7 @@ const townTour = (l, i) => ({
 const askKimmy = (s, faqPair, idx) => ({
   slug: `ask-kimmy-${s.slug}-${idx + 1}`, series: 'Ask Kimmy',
   slides: [
-    cover({ eyebrow: 'Ask Kimmy', img: IMG(s.img), tag: s.short, title: `${s.short}: <em style="font-style:italic;font-weight:400;color:#F5D3CF">your questions, answered.</em>` }),
+    cover({ eyebrow: 'Ask Kimmy', img: IMG(idx === 0 ? s.img : SVC_IMG2[s.slug]), tag: s.short, title: `${s.short}: <em style="font-style:italic;font-weight:400;color:#F5D3CF">${idx === 0 ? 'your questions, answered.' : 'round two.'}</em>` }),
     question({ n: 2, total: 6, q: faqPair[0].q }),
     answer({ n: 3, total: 6, a: trunc(faqPair[0].a, 400) }),
     question({ n: 4, total: 6, q: faqPair[1].q }),
@@ -186,7 +195,7 @@ const CHECKLISTS = [
     tagKeys: ['land', 'buyer'],
   },
   {
-    slug: 'horse-property-checklist', title: `What a rider checks that listings <em style="font-style:italic;font-weight:400;color:#F5D3CF">don't show.</em>`, img: 'gen-equestrian.jpg', eyebrow: 'Horse Property', tag: 'From a barrel racer',
+    slug: 'horse-property-checklist', title: `What a rider checks that listings <em style="font-style:italic;font-weight:400;color:#F5D3CF">don't show.</em>`, img: 'gen-tack-room.jpg', eyebrow: 'Horse Property', tag: 'From a barrel racer',
     slides: [
       { title: `Buy the winter`, body: `Every horse property shows beautifully in July. The question is February: where does water sit, which paddocks turn to mud, does the barn flood, can the hay truck make the driveway?` },
       { title: `Dig into the arena`, body: `Base and drainage matter more than size. You want compacted base under 2–4 inches of footing, a crown that sheds water, and honest answers about January. Deep, baseless footing bows tendons.` },
@@ -197,7 +206,7 @@ const CHECKLISTS = [
     tagKeys: ['horse', 'buyer'],
   },
   {
-    slug: 'first-winter-checklist', title: `Your first winter on acreage: <em style="font-style:italic;font-weight:400;color:#F5D3CF">the checklist.</em>`, img: 'gen-timber.jpg', eyebrow: 'Rural Life', tag: 'Road-tested',
+    slug: 'first-winter-checklist', title: `Your first winter on acreage: <em style="font-style:italic;font-weight:400;color:#F5D3CF">the checklist.</em>`, img: 'gen-woodstove.jpg', eyebrow: 'Rural Life', tag: 'Road-tested',
     slides: [
       { title: `Firewood by September`, body: `Three cords minimum, dry and covered, for a wood-heated home. Green November wood heats poorly and creosotes your flue. The chimney sweep booked out in October — call in August.` },
       { title: `Power: assume it blinks`, body: `Rural lines drop in wind and ice. A generator with a transfer switch — or at minimum a plan for the well pump, freezer, and heat — turns outages into inconvenience instead of crisis.` },
@@ -208,7 +217,7 @@ const CHECKLISTS = [
     tagKeys: ['ranch'],
   },
   {
-    slug: 'selling-ranch-prep', title: `Selling next year? Start these <em style="font-style:italic;font-weight:400;color:#F5D3CF">now.</em>`, img: 'gen-barn-sunset.jpg', eyebrow: 'Seller School', tag: 'For ranch owners',
+    slug: 'selling-ranch-prep', title: `Selling next year? Start these <em style="font-style:italic;font-weight:400;color:#F5D3CF">now.</em>`, img: 'gen-hay-tractor.jpg', eyebrow: 'Seller School', tag: 'For ranch owners',
     slides: [
       { title: `Exercise your water rights`, body: `Irrigate the mapped acres and keep the power bills. Five years of non-use forfeits a right — and buyers' attorneys check. A documented, active right is often the most valuable line item on the ranch.` },
       { title: `Pull your paper`, body: `Well logs, water certificates, septic records, outbuilding permits, deferral status. One organized binder is worth real percentage points of price. Buyers pay for certainty.` },
@@ -219,7 +228,7 @@ const CHECKLISTS = [
     tagKeys: ['ranch', 'seller'],
   },
   {
-    slug: 'water-rights-101', title: `Oregon water rights in <em style="font-style:italic;font-weight:400;color:#F5D3CF">four slides.</em>`, img: 'gen-riverfront.jpg', eyebrow: 'Buyer Bootcamp', tag: 'The important one',
+    slug: 'water-rights-101', title: `Oregon water rights in <em style="font-style:italic;font-weight:400;color:#F5D3CF">four slides.</em>`, img: 'gen-wheel-line.jpg', eyebrow: 'Buyer Bootcamp', tag: 'The important one',
     slides: [
       { title: `The one-sentence version`, body: `Water belongs to the public; a water right is a license to use it — first in time, first in right, and use it or lose it. Everything about irrigated land value flows from that sentence.` },
       { title: `What a right specifies`, body: `Source, priority date (seniority in drought years), rate, season, mapped place of use, and character of use. A right not being exercised on the mapped acres can be forfeited after five years of non-use.` },
@@ -230,7 +239,7 @@ const CHECKLISTS = [
     tagKeys: ['land', 'ranch'],
   },
   {
-    slug: 'land-red-flags', title: `5 land red flags I look for <em style="font-style:italic;font-weight:400;color:#F5D3CF">first.</em>`, img: 'gen-land.jpg', eyebrow: 'Buyer Bootcamp', tag: 'Before you offer',
+    slug: 'land-red-flags', title: `5 land red flags I look for <em style="font-style:italic;font-weight:400;color:#F5D3CF">first.</em>`, img: 'gen-survey-stake.jpg', eyebrow: 'Buyer Bootcamp', tag: 'Before you offer',
     slides: [
       { title: `No well logs nearby`, body: `Wells are public record. If the parcels around your dream dirt show deep, weak wells — or none at all — that "great price" starts making sense. Water risk prices into everything.` },
       { title: `"Access has never been an issue"`, body: `Translation: nobody's checked the easements. If legal access isn't recorded, you may be buying a landlocked parcel and a future lawsuit. Title review answers it in a day.` },
@@ -242,7 +251,7 @@ const CHECKLISTS = [
     tagKeys: ['land', 'buyer'],
   },
   {
-    slug: 'usda-zero-down', title: `Zero down. Yes, <em style="font-style:italic;font-weight:400;color:#F5D3CF">really.</em>`, img: 'gen-rural-home.jpg', eyebrow: 'Buyer Bootcamp', tag: 'USDA loans',
+    slug: 'usda-zero-down', title: `Zero down. Yes, <em style="font-style:italic;font-weight:400;color:#F5D3CF">really.</em>`, img: 'gen-cottage.jpg', eyebrow: 'Buyer Bootcamp', tag: 'USDA loans',
     slides: [
       { title: `What USDA loans are`, body: `Government-backed home loans with 0% down and competitive rates for qualifying buyers in eligible rural areas. Not farms-only, not obscure — just underused.` },
       { title: `Most of this county qualifies`, body: `Central Roseburg generally doesn't — but Winston, Sutherlin, Myrtle Creek, Oakland, Glide, and most surrounding communities typically do. Eligibility is checked by exact address.` },
@@ -253,7 +262,7 @@ const CHECKLISTS = [
     tagKeys: ['buyer'],
   },
   {
-    slug: 'riverfront-reality', title: `Riverfront, <em style="font-style:italic;font-weight:400;color:#F5D3CF">honestly.</em>`, img: 'gen-riverfront.jpg', eyebrow: 'Buyer Bootcamp', tag: 'The real math',
+    slug: 'riverfront-reality', title: `Riverfront, <em style="font-style:italic;font-weight:400;color:#F5D3CF">honestly.</em>`, img: 'gen-gravel-bar.jpg', eyebrow: 'Buyer Bootcamp', tag: 'The real math',
     slides: [
       { title: `Not all frontage is equal`, body: `Usable frontage — where you can walk to your own gravel bar, swim, fish, launch a boat — carries a serious premium. Steep-bank "look but don't touch" frontage shouldn't be priced like the real thing.` },
       { title: `The flood zone question`, body: `Mapped flood-zone homes with a mortgage need flood insurance; bench homes above the floodplain often need none. An elevation certificate settles ambiguous cases for a few hundred dollars.` },
@@ -264,7 +273,7 @@ const CHECKLISTS = [
     tagKeys: ['land', 'buyer'],
   },
   {
-    slug: 'timberland-payoff', title: `Timberland: the investment you can <em style="font-style:italic;font-weight:400;color:#F5D3CF">picnic on.</em>`, img: 'gen-timber.jpg', eyebrow: 'Land Smarts', tag: 'Douglas fir country',
+    slug: 'timberland-payoff', title: `Timberland: the investment you can <em style="font-style:italic;font-weight:400;color:#F5D3CF">picnic on.</em>`, img: 'gen-log-deck.jpg', eyebrow: 'Land Smarts', tag: 'Douglas fir country',
     slides: [
       { title: `Trees are a crop`, body: `Douglas County grows Douglas fir about as well as anywhere on the planet, on a 35–50 year rotation. A timbered 40 can hold six figures of standing value — or almost none if it was recently cut. A cruise tells you which.` },
       { title: `Tiny taxes while it grows`, body: `Forestland deferral taxes qualifying ground at forest-use value — a fraction of market-rate taxation. Keep it stocked, keep the paperwork straight, and the holding cost stays small.` },
@@ -275,7 +284,7 @@ const CHECKLISTS = [
     tagKeys: ['land', 'ranch'],
   },
   {
-    slug: 'selling-inherited-property', title: `Inherited a rural property? <em style="font-style:italic;font-weight:400;color:#F5D3CF">Breathe. Then this.</em>`, img: 'gen-barn-sunset.jpg', eyebrow: 'Seller School', tag: 'Estate & probate',
+    slug: 'selling-inherited-property', title: `Inherited a rural property? <em style="font-style:italic;font-weight:400;color:#F5D3CF">Breathe. Then this.</em>`, img: 'gen-old-farmhouse.jpg', eyebrow: 'Seller School', tag: 'Estate & probate',
     slides: [
       { title: `Secure and assess first`, body: `Make sure the place is safe, insured, and winterized. If you're out of the area, a local agent can be boots-on-ground — checking the property, meeting appraisers, keeping things moving while you handle everything else.` },
       { title: `Find the rural paperwork`, body: `Well logs, septic records, water rights (the five-year non-use clock may already be running), deferral status. Estates that answer these questions sell for market; ones that don't get discounted for uncertainty.` },
@@ -286,7 +295,7 @@ const CHECKLISTS = [
     tagKeys: ['seller'],
   },
   {
-    slug: 'moving-from-california', title: `California equity → Oregon acreage: <em style="font-style:italic;font-weight:400;color:#F5D3CF">a reality check.</em>`, img: 'gen-horses-mist.jpg', eyebrow: 'Relocation', tag: 'Read before moving',
+    slug: 'moving-from-california', title: `California equity → Oregon acreage: <em style="font-style:italic;font-weight:400;color:#F5D3CF">a reality check.</em>`, img: 'coast-walk.jpg', eyebrow: 'Relocation', tag: 'Read before moving',
     slides: [
       { title: `The math is real`, body: `A median metro home's equity commonly translates here into a quality home on 5–20 acres — often with change left over. That part of the dream checks out.` },
       { title: `The adjustments are real too`, body: `Contractors run on relationships, not review apps. Winter is dark, wet, and beautiful. Internet depends on your road — verify BEFORE you buy if you work remote. Smoke happens some summers.` },
@@ -297,7 +306,7 @@ const CHECKLISTS = [
     tagKeys: ['town', 'buyer'],
   },
   {
-    slug: 'hunting-ground-checklist', title: `Buying hunting ground? Check <em style="font-style:italic;font-weight:400;color:#F5D3CF">these four.</em>`, img: 'gen-hunting.jpg', eyebrow: 'Land Smarts', tag: 'From a hunter',
+    slug: 'hunting-ground-checklist', title: `Buying hunting ground? Check <em style="font-style:italic;font-weight:400;color:#F5D3CF">these four.</em>`, img: 'gen-elk-herd.jpg', eyebrow: 'Land Smarts', tag: 'From a hunter',
     slides: [
       { title: `Feed, water, cover, quiet`, body: `Elk need all four in their daily loop. A meadow system, year-round water, timbered bedding, and low pressure will hold animals that a bigger, barer parcel never sees.` },
       { title: `Public land next door`, body: `Douglas County is laced with BLM and Forest Service ground. A 60 bordering thousands of public acres hunts like something far bigger — verify actual legal adjacency on maps, not listing claims.` },
@@ -368,18 +377,47 @@ const WEEK_PATTERN = [
   ['tip', 'townTour'],
 ];
 
+// Constraint: a series never appears twice on the same day, and never in two
+// consecutive posts (even across a day boundary).
 export const posts = [];
+let prevKey = null;
 for (let day = 1; day <= 60; day++) {
   const pattern = WEEK_PATTERN[(day - 1) % 7];
+  const todayKeys = [];
   for (let slot = 0; slot < 2; slot++) {
+    const banned = new Set([prevKey, ...todayKeys]);
     let key = pattern[slot];
-    if (!queues[key].length) {
-      key = Object.keys(queues).sort((a, b) => queues[b].length - queues[a].length)[0];
+    if (!queues[key]?.length || banned.has(key)) {
+      const allowed = Object.keys(queues).filter(k => queues[k].length && !banned.has(k));
+      const pool = allowed.length ? allowed : Object.keys(queues).filter(k => queues[k].length);
+      key = pool.sort((a, b) => queues[b].length - queues[a].length)[0];
     }
     const post = queues[key].shift();
-    posts.push({ day, slot: slot === 0 ? 'a' : 'b', ...post });
+    posts.push({ day, slot: slot === 0 ? 'a' : 'b', seriesKey: key, ...post });
+    todayKeys.push(key);
+    prevKey = key;
   }
 }
 
 const remaining = Object.values(queues).reduce((a, q) => a + q.length, 0);
 if (remaining) console.warn(`WARNING: ${remaining} posts unscheduled`);
+
+// Guards: no photo may appear in two different posts (CTA headshot excepted),
+// and no series may repeat in adjacent posts.
+{
+  const seen = new Map();
+  for (const p of posts) {
+    for (const html of p.slides) {
+      for (const m of html.matchAll(/file:\/\/[^"]+\/([\w.-]+\.(?:jpg|png))/g)) {
+        if (m[1] === 'kimmy-headshot.jpg') continue;
+        if (seen.has(m[1]) && seen.get(m[1]) !== p.slug)
+          console.warn(`DUPLICATE IMAGE: ${m[1]} in ${seen.get(m[1])} AND ${p.slug}`);
+        seen.set(m[1], p.slug);
+      }
+    }
+  }
+  for (let i = 1; i < posts.length; i++) {
+    if (posts[i].seriesKey === posts[i - 1].seriesKey)
+      console.warn(`ADJACENT SERIES: ${posts[i - 1].day}${posts[i - 1].slot} and ${posts[i].day}${posts[i].slot} are both ${posts[i].seriesKey}`);
+  }
+}
